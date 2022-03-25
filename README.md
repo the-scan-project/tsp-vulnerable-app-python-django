@@ -1,23 +1,22 @@
-# A sample application with known vulnerabilities - Python, Django 
+# A sample application with known vulnerabilities - Python, Django
 
 A sample application with known issues for testing various linters, scanners,
 and scan automation.
 
 This project uses:
 
-| Component   | In Use                             		| 
-|-------------|-----------------------------------------|
-| Platform    | Python									|
-| Language(s) | [Python](https://www.python.org/)		|
-| Build       | [Poetry](https://python-poetry.org/)	|
-| Framework   | [Django](https://www.djangoproject.com/)|
+| Component   | In Use                                   | 
+|-------------|------------------------------------------|
+| Platform    | Python                                   |
+| Language(s) | [Python](https://www.python.org/)        |
+| Build       | [Poetry](https://python-poetry.org/)     |
+| Framework   | [Django](https://www.djangoproject.com/) |
 
 ## Security issues
 
-
-| Vulnerability Type | Description | Location | Poc Command |
-|--------------------|-------------|----------|-------------|
-| [Cross Site Scripting (XSS)](https://cwe.mitre.org/data/definitions/79.html) | `hello.views.index` generates page output in code. It expects a name as a parameter to say `f"Hello, {name}"` and just interpolates user input to the output without escaping it | `return HttpResponse(f"Hello, {name}")`| <http://localhost:8000/hello?name=%3Cscript%3Ealert(1)%3C/script%3E> | 
+| Vulnerability Type                                                           | Description                                                                                                                                                                      | Location                                | Poc Command                                                          |
+|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------------------------------------------------------------------|
+| [Cross Site Scripting (XSS)](https://cwe.mitre.org/data/definitions/79.html) | `hello.views.index` generates page output in code. It expects a name as a parameter to say `f"Hello, {name}"` and just interpolates user input to the output without escaping it | `return HttpResponse(f"Hello, {name}")` | <http://localhost:8000/hello?name=%3Cscript%3Ealert(1)%3C/script%3E> | 
 
 ### Other issues
 
