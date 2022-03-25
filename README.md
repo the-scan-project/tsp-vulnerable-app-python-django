@@ -7,7 +7,7 @@ This project uses:
 
 | Component   | In Use                                   | 
 |-------------|------------------------------------------|
-| Platform    | Python                                   |
+| Platform    | [Python](https://www.python.org/)        |
 | Language(s) | [Python](https://www.python.org/)        |
 | Build       | [Poetry](https://python-poetry.org/)     |
 | Framework   | [Django](https://www.djangoproject.com/) |
