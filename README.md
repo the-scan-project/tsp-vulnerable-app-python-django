@@ -16,7 +16,7 @@ This project uses:
 
 | Vulnerability Type                                                               | Description                                                                                                                                                                      | Location                                                                            | Poc Command                                                          |
 |----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| [Cross Site Scripting (XSS)](https://cwe.mitre.org/data/definitions/79.html)     | `hello.views.index` generates page output in code. It expects a name as a parameter to say `f"Hello, {name}"` and just interpolates user input to the output without escaping it | `return HttpResponse(f"Hello, {name}")`                                             | <http://localhost:8000/hello?name=%3Cscript%3Ealert(1)%3C/script%3E> | 
+| [Cross Site Scripting (XSS)](https://cwe.mitre.org/data/definitions/79.html)     | `hello.views.index` generates page output in code. It expects a name as a parameter to say `f"Hello, {name}"` and just interpolates user input to the output without escaping it | `return HttpResponse(f"Hello, {name}")`                                             | <http://localhost:8080/hello?name=%3Cscript%3Ealert(1)%3C/script%3E> | 
 | [Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html) | There are secrets in the code committed to the repository                                                                                                                        | `SECRET_KEY = "django-insecure-$^e#o&rg#c$)114)g!mgn=b_#$8n5hsma2r7xoaf-%-0o^ei4g"` | N/A                                                                  |
 
 ### Other issues
@@ -47,5 +47,5 @@ poetry install
 poetry run python manage.py makemigrations hello
 
 # Start the application
-poetry run python manage.py runserver
+poetry run python manage.py runserver 0.0.0.0:8080
 ```
